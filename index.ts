@@ -71,7 +71,7 @@ function PhantomFetcherCustom(callback) {
 
 }
 
-type VueRef = object & {__v_isRef: any;}
+type VueRef = object & {value: any;}
 
 export interface DefaultConfig {
     loading?:     VueRef | ((state: boolean) => void)

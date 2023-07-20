@@ -18,7 +18,7 @@ type CplxBR<ConfigT, BodyT, QueryT, RespT> = (body: BodyT | null, query: QueryT,
 type CplxQR<ConfigT, BodyT, QueryT, RespT> = (body: BodyT, query?: QueryT | null, config?: ConfigT) => Promise<RespT>;
 declare function PhantomFetcherCustom(callback: any): any;
 type VueRef = object & {
-    __v_isRef: any;
+    value: any;
 };
 export interface DefaultConfig {
     loading?: VueRef | ((state: boolean) => void);

@@ -62,7 +62,6 @@ var events_1 = require("events");
 function PhantomEventEmitter(options) {
     return new events_1.EventEmitter(options);
 }
-
 exports.PhantomEventEmitter = PhantomEventEmitter;
 function CallableProxy(handler) {
     return this.proxy = new Proxy((typeof handler.target === 'function' ? handler.target.bind(this) : handler.target), handler);
