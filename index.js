@@ -213,10 +213,7 @@ var simpleApiFetch = function (method, path, body, query, headers, opts) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    options = {
-                        method: method,
-                        headers: __assign({}, headers)
-                    };
+                    options = __assign({ method: method, headers: __assign({}, headers) }, opts.fetch_options || {});
                     if (body) {
                         options.headers['Content-Type'] = 'application/json';
                         options.body = JSON.stringify(body);

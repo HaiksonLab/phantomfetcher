@@ -173,12 +173,14 @@ const simpleApiFetch = async function(
 ) {
     const options: any = {
         method,
-        headers: {...headers}
+        headers: {...headers},
+        ...opts.fetch_options || {}
     }
 
     if (body) {
         options.headers['Content-Type'] = 'application/json';
         options.body = JSON.stringify(body);
+
     }
 
     if (query) {
