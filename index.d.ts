@@ -36,6 +36,6 @@ type FetchProcedureT<ConfigT> = (options: ConfigT, path: string[], body: null | 
 declare function PhantomFetcher<ConfigT, RootT>(EventEmitter: EventEmitter | null, Callback: FetchProcedureT<ConfigT & DefaultConfig>): RootConfigurable<ConfigT & DefaultConfig, RootT>;
 export interface EmptyArray extends Array<any> {
 }
-declare function AsyncParallelismControl(name: string, prevent: boolean, queue: EmptyArray, fn: () => any): any;
+declare function AsyncParallelismControl(name: string, prevent: boolean, queue: EmptyArray, fn: () => any): Promise<unknown>;
 declare const simpleApiFetch: (method: string, path: string, body: object | null, query: object | string | null, headers: object | null, opts?: object) => Promise<Response>;
 export { PhantomEventEmitter, PhantomFetcher, PhantomFetcherCustom, AsyncParallelismControl, simpleApiFetch, NoData, BodyRe, BodyOp, QuerRe, QuerOp, CplxRe, CplxOp, CplxBR, CplxQR, };

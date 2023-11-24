@@ -146,12 +146,14 @@ function AsyncParallelismControl(name: string, prevent: boolean, queue: EmptyArr
     const events = queue[0];
 
     return new Promise(async (resolve, reject) => {
+        const is_first = !events.eventNames().includes(name);
+
         events.once(name, function(error, result) {
             if (error) reject(error);
             else       resolve(result);
         });
 
-        if (prevent && events.eventNames().includes(name)) {
+        if (prevent && !is_first) {
             return;
         }
 
