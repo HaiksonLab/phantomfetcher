@@ -146,9 +146,10 @@ function AsyncParallelismControl(name: string, prevent: boolean, queue: EmptyArr
     const events = queue[0];
 
     return new Promise(async (resolve, reject) => {
-        const is_first = !events.eventNames().includes(name);
+        const event_name = prevent? name : name+Math.random();
+        const is_first = !events.eventNames().includes(event_name);
 
-        events.once(name, function(error, result) {
+        events.once(event_name, function(error, result) {
             if (error) reject(error);
             else       resolve(result);
         });
@@ -158,9 +159,9 @@ function AsyncParallelismControl(name: string, prevent: boolean, queue: EmptyArr
         }
 
         try {
-            events.emit(name, null, await fn());
+            events.emit(event_name, null, await fn());
         } catch (error) {
-            events.emit(name, error, null);
+            events.emit(event_name, error, null);
         }
     });
 }
